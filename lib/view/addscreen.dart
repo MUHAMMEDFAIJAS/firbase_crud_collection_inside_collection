@@ -35,8 +35,9 @@ class Addscreen extends StatelessWidget {
                     age: ageController.text, name: nameController.text);
                 Testingservice().adddata(stModel, id);
                 // .adddata(nameController.text, ageController.text,);
+                
               },
-              child: Text('submit')),
+              child:const Text('submit')),
         ],
       ),
     );

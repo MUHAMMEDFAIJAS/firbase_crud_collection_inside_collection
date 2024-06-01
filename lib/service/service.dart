@@ -10,9 +10,19 @@ class Testingservice {
   //   await firestore.doc(id).collection("test"). add({"name": name, "age": age});
   // }
 
-  Future<TestingModel> adddata(TestingModel model,String id) async {
-    await firestore.doc(id).collection('tesst') .add(model.toJson());
+
+// to create a collection inside collection with model
+
+
+  Future<TestingModel> adddata(TestingModel model, String id) async {
+    await firestore.doc(id).collection('tesst').add(model.toJson());
     return model;
+  }
+
+  Stream<List<TestingModel>> getdata() {
+    return firestore.snapshots().map((snapshot) => snapshot.docs
+        .map((doc) => TestingModel.fromJson(doc.data() as Map<String, dynamic>))
+        .toList());
   }
 
   //   Stream<List<StModel>> getdata() {
